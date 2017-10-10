@@ -9,7 +9,7 @@
 
         <div class="blogEntry">
             {% for blog in blogs %}
-            <h2><a href="blog/?id={{blog.id}}">{{blog.title}}</a></h2>
+            <h2><a href="./blog?id={{blog.id}}">{{blog.title}}</a></h2>
             <p class="forBorder">{{blog.body}}</p>
             {% endfor %}
         </div>

@@ -3,6 +3,7 @@
 {% block content %}
 
     <h1>Add a Blog Entry</h1>
+    <form method="post">
         <label for="title">Title for your new blog</label>
         <input type="text" name="title" value=""></input>
         <span class="error">{{title_error}}</span>
@@ -10,6 +11,6 @@
         <input type="text" name='body' value=""></input>
         <span class="error">{{body_error}}</span>
         <input type="submit" value='Add Entry'></input>
-</form>
+    </form>
 
 {% endblock %}

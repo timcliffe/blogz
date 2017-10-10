@@ -49,10 +49,10 @@ def add_blog():
 @app.route('/blog', methods=['POST', 'GET'])
 def index():
     if request.args:
-        blog_id = request.args("id")
+        blog_id = request.args.get("id")
         blog = Blog.query.get(blog_id)
 
-        return render_template('blogentry.html', blog=blog)
+        return render_template('blogpost.html', blog=blog)
 
     else:
         blogs = Blog.query.all()
