@@ -1,0 +1,17 @@
+.title {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.body_field {
+    height: 100%;
+    width: 100%;
+    padding: 12px 20px;
+}

@@ -46,11 +46,10 @@ def register():
     return render_template('signup.html')
 
 
-
-@app.route('/blog/newpost', methods=['GET', 'POST'])
+@app.route('/newentry', methods=['GET', 'POST'])
 def add_blog():
     if request.method == 'GET':
-        return render_template('newpost.html', title="Add Blog Entry")
+        return render_template('newentry.html', title="Add A New Entry")
 
     if request.method == 'POST':
         blog_title = request.form['title']
@@ -59,7 +58,7 @@ def add_blog():
         body_error = ""
 
         if len(blog_title) < 1:
-            title_error = "Invalid body"
+            title_error = "Invalid Title"
 
         if not title_error and not body_error:
             new_blog = Blog(blog_title, blog_body)
@@ -69,10 +68,17 @@ def add_blog():
             return redirect(query_param_url)
 
         else:
-            return render_template('newpost.html', title="Add Blog Entry", title_error=title_error, body_error=body_error)
+            return render_template('newentry.html', title="Add Blog Entry", title_error=title_error, body_error=body_error)
 
 
 
+@app.route('/blog', methods=['GET'])
+def index():
+    if request.args:
+        blog_id = request.args.get("id")
+        blog = Blog.query.get(blog_id)
+
+        return render_template('blogpost.html', blog=blog)
 
 
 @app.route('/blog', methods=['POST', 'GET'])

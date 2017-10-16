@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <head>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    </head>
+    <h1 class="title">Add a Blog Entry</h1>
+    <form method="post">
+        <label for="title">New Blog Title:</label>
+        <input type="text" name="title" value=""></input><br />
+        <span class="error">{{title_error}}</span>
+        <label for="body">Your New Post:</label>
+        <input class="body_field" type="text" name='body' value="" size="40"></input><br />
+        <span class="error">{{body_error}}</span>
+        <input type="submit" value='Add Entry'></input>
+    </form>
+
+{% endblock %}

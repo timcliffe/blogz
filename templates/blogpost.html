@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{blog.title}}</h1>
+    <head>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <h1 class="title">{{blog.title}}</h1>
     <p>{{blog.body}}</p>
 
 {% endblock %}
