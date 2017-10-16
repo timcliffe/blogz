@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="title">CLIFFE'S BLOGS</h1>
+    <head>
+        <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <h1 class="title"><div align="center">CLIFFE'S BLOG</div></h1>
 
     {% if blogs|length == 0 %}
     <p>No blogs yet</p>
@@ -9,7 +12,7 @@
 
         <div class="blogEntry">
             {% for blog in blogs %}
-            <h2><a href="./blog?id={{blog.id}}">{{blog.title}}</a></h2>
+            <h2 class="title"><a href="./blog?id={{blog.id}}">{{blog.title}}</a></h2>
             <p class="forBorder">{{blog.body}}</p>
             <hr />
             {% endfor %}
