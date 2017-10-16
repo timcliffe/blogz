@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {{% if bloggers|length == 0 %}}
+    <p>Keine bloggen steht da.</p>
+    {% else %}
+    <h2><a href="/blogger?id={{blogger.id}}">{{blogger.name}}</a></h2>
+
+<p>Das ist wo die benutzen-name zeigt es</p>
+
+<p>Diese sind die posten</p>
+
+
+{% end block %}
