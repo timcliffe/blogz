@@ -1,12 +1,13 @@
 <!doctype html>
 <html>
     <head>
-        <title>{{title}}</title>
+        <title class="title">{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
     </head>
     <body>
         <nav>
             <a href="/blog">Main Blog Page</a>
-            <a href="/newpost">Add a Blog Entry</a>
+            <a href="/newentry">Add a Blog Entry</a>
         </nav>
         {% block content %}
         {% endblock %}

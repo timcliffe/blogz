@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://build-a-blog:Angels1234@localhost:8889/build-a-blog"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://build-a-blog:Angels1234@localhost:34000/build-a-blog"
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
@@ -20,10 +20,10 @@ class Blog(db.Model):
 
 
 
-@app.route('/newpost', methods=['GET', 'POST'])
+@app.route('/newentry', methods=['GET', 'POST'])
 def add_blog():
     if request.method == 'GET':
-        return render_template('newpost.html', title="Add Blog Entry")
+        return render_template('newentry.html', title="Add A New Entry")
 
     if request.method == 'POST':
         blog_title = request.form['title']
@@ -32,7 +32,7 @@ def add_blog():
         body_error = ""
 
         if len(blog_title) < 1:
-            title_error = "Invalid body"
+            title_error = "Invalid Title"
 
         if not title_error and not body_error:
             new_blog = Blog(blog_title, blog_body)
@@ -42,11 +42,11 @@ def add_blog():
             return redirect(query_param_url)
 
         else:
-            return render_template('newpost.html', title="Add Blog Entry", title_error=title_error, body_error=body_error)
+            return render_template('newentry.html', title="Add Blog Entry", title_error=title_error, body_error=body_error)
 
 
 
-@app.route('/blog', methods=['POST', 'GET'])
+@app.route('/blog', methods=['GET'])
 def index():
     if request.args:
         blog_id = request.args.get("id")
