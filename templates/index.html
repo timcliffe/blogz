@@ -3,13 +3,13 @@
 {% block content %}
 
     {{% if bloggers|length == 0 %}}
-    <p>Keine bloggen steht da.</p>
+    <p>No Blogs Yet</p>
     {% else %}
     <h2><a href="/blogger?id={{blogger.id}}">{{blogger.name}}</a></h2>
 
-<p>Das ist wo die benutzen-name zeigt es</p>
+<p>Username</p>
 
-<p>Diese sind die posten</p>
+<p>Post</p>
 
 
 {% end block %}
