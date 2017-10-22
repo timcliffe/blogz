@@ -150,11 +150,12 @@ def add_blog():
 
 
 
-@app.route('/blog/newentry', methods=['POST', 'GET'])
-def new_entry():
-    if request.args:
-        blog_id = request.args.get("id")
-        blog = Blog.query.get(blog_id)
+#@app.route('/blog/newentry', methods=['POST', 'GET'])
+#def new_entry():
+    #if request.args:
+        #blog_id = request.args.get("id")
+        #blog = Blog.query.get(blog_id)
+    #return render_template
 
 
     
