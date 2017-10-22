@@ -38,7 +38,7 @@ class Blog(db.Model):
 def blog():
     if request.args.get("id"):
         blog_id = request.args.get("id")
-        blogs = Blog.query.get(blog_id)
+        blog = Blog.query.get(blog_id)
         return render_template('blogpost.html', blog=blog)
     else:
         blogs = Blog.query.all()
@@ -71,12 +71,12 @@ def signup():
         password = request.form['password']
         verify = request.form['verify']
 
-        # if username == "" or " " or len(username) < 3 or len(username) > 20:
-        #     flash("Invalid Username", 'error')
-        # if password == "" or " " or len(password) < 3 or len(password) > 20:
-        #     flash("Invalid Password", 'error')
-        # if verify == "" or verify != password:
-        #     flash("Failed Verification", 'error')
+        if username == "" or " " or len(username) < 3 or len(username) > 20:
+            flash("Invalid Username", 'error')
+        if password == "" or " " or len(password) < 3 or len(password) > 20:
+            flash("Invalid Password", 'error')
+        if verify == "" or verify != password:
+            flash("Failed Verification", 'error')
 
         existing_blogger = Blogger.query.filter_by(username=username).first()
         if True:
