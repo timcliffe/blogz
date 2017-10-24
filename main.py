@@ -44,6 +44,14 @@ def blog():
         blogs = Blog.query.all()
         return render_template('blog.html', blogs=blogs)
 
+@app.route('/blogger')
+def blogger():
+    if request.args.get("id"):
+        blogger_id = request.args.get("id")
+        single_blogger = Blogger.query.get(blogger_id)
+        blogs = Blog.query.filter_by(blogger=single_blogger).all()
+        return render_template('blogger.html', blogs=blogs, username = single_blogger.username)
+
 
 
 
@@ -56,7 +64,13 @@ def validate_login():
 
 @app.route('/')
 def index():
-    return redirect('/login')
+    if request.args.get("id"):
+        blogger_id = request.args.get("id")
+        all_bloggers = Blogger.query.get(blogger_id)
+        return render_template('index.html', all_bloggers=all_bloggers)
+    else:
+        all_bloggers = Blogger.query.all()
+        return render_template('index.html', all_bloggers=all_bloggers)
 
 
 
@@ -71,12 +85,12 @@ def signup():
         password = request.form['password']
         verify = request.form['verify']
 
-        if username == "" or " " or len(username) < 3 or len(username) > 20:
-            flash("Invalid Username", 'error')
-        if password == "" or " " or len(password) < 3 or len(password) > 20:
-            flash("Invalid Password", 'error')
-        if verify == "" or verify != password:
-            flash("Failed Verification", 'error')
+    # if username == "" or " " or len(username) < 3 or len(username) > 20:
+    #     flash("Invalid Username", 'error')
+    # if password == "" or " " or len(password) < 3 or len(password) > 20:
+    #     flash("Invalid Password", 'error')
+    # if verify == "" or verify != password:
+    #     flash("Failed Verification", 'error')
 
         existing_blogger = Blogger.query.filter_by(username=username).first()
         if True:

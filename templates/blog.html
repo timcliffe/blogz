@@ -13,6 +13,7 @@
             {% for blog in blogs %}
             <h2 class="title"><a href="./blog?id={{blog.id}}">{{blog.title}}</a></h2>
             <p class="forBorder">{{blog.body}}</p>
+            <p>by <strong>{{blog.blogger.username}}</strong></p>
             <hr />
             {% endfor %}
         </div>

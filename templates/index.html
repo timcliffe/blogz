@@ -2,14 +2,15 @@
 
 {% block content %}
 
-    {{% if bloggers|length == 0 %}}
-    <p>No Blogs Yet</p>
+    {% if all_bloggers|length == 0 %}
+    <p>No Bloggers Yet</p>
     {% else %}
-    <h2><a href="/blogger?id={{blogger.id}}">{{blogger.name}}</a></h2>
+    <h1><div align="center">WELCOME TO CLIFFE'S BLOGZ</div></h1></br>
+    <h2>Official Bloggers:</h2>
+    {% for blogger in all_bloggers %}
+    <h3><a href="/blogger?id={{blogger.id}}">{{blogger.username}}</a></h3>
+    {% endfor %}
+    {% endif %}
 
-<p>Username</p>
 
-<p>Post</p>
-
-
-{% end block %}
+{% endblock %}
